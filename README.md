@@ -23,4 +23,4 @@ CASE OpSel is
 			end case;
 ```
 #####Simulation
-![alt tag](https://raw.github.com/EricWardner/PRISM_Wardner/master/ALU_Simulation.png)
+![alt tag](https://raw.githubusercontent.com/EricWardner/PRISM_Wardner/master/ALU_Simulation.PNG)
