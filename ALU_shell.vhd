@@ -58,7 +58,25 @@ begin
 --  7     : LD
 aluswitch: process (Accumulator, Data, OpSel)
         begin
+			CASE OpSel is
+				when "000" =>
+					Result <= Accumulator and Data;
+				when "001" =>
+					Result <= not(Accumulator) + "0001";
+				when "010" => 
+					Result <= not Accumulator;
+				when "011" => 
+					Result <= To_StdLogicVector(To_BitVector(Accumulator) ror 1);
+				when "100" =>
+					Result <= Data or Accumulator;
+				when "101" =>
+					Result <= Data;
+				when "110" =>
+					Result <= Accumulator + Data;
+				when others =>
+					Result <= Data;
 		-- enter your if/then/else or case statements here
+			end case;
 		end process;
 
 -- OR, enter your conditional signal statement here
