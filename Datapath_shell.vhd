@@ -56,17 +56,14 @@ architecture Datapath of Datapath is
 	-- Copy the declaration for your ALU here
 
 
-
-
-
-
-
-
-
-
-
-
-
+	COMPONENT ALU
+	PORT(
+		OpSel : IN std_logic_vector(2 downto 0);
+		Data : IN std_logic_vector(3 downto 0);
+		Accumulator : IN std_logic_vector(3 downto 0);          
+		Result : OUT std_logic_vector(3 downto 0)
+		);
+	END COMPONENT;
 
 
 
@@ -106,93 +103,95 @@ begin
 	-- asynchronous Reset_L line and clocked data input.  Which control signal also determines
 	-- when data is loaded?  What are the inputs and outputs from the register?
 	
-	process(          )
-  	begin				 
-	  
-
-
-
-
-
-
-  	end process;   
+	process(CLOCK, Reset_L, IRLd)
+	begin
+	if rising_edge(CLOCK) then  		
+		if(Reset_L = '1') then
+			IR <= "0000";	
+		
+		elsif(IRLD ='1') then
+			IR <= Data;
+		end if;
+	end if;
+	end process;   
 	  	
 	  	
 	-- Complete the code to implement an Memory Address Register (Hi).  Use a standard register with an 
 	-- asynchronous Reset_L line and clocked data input.  Which control signal also determines
 	-- when data is loaded?	 What are the inputs and outputs from the register?
 
-	process(          )
+	process(Clock, Reset_L, MARHiLd)
   	begin				 
-	  
-
-
-
-
-
-
+	  if rising_edge(CLOCK) then
+			if(Reset_L = '1') then
+				MARHi <= "0000";
+			elsif(MARHiLd = '1') then
+				MARHi <= Data;
+			end if;
+		end if;
   	end process;       
 
 	-- Complete the code to implement an Memory Address Register (Lo).  Use a standard register with an 
 	-- asynchronous Reset_L line and clocked data input.  Which control signal also determines
 	-- when data is loaded?	 What are the inputs and outputs from the register?
 	
-	process(          )
+	process(Clock, Reset_L, MARloLd)
   	begin				 
-	  
-
-
-
-
-
-
+	  if rising_edge(CLOCK) then
+			if(Reset_L <= '1') then
+				MARLo <= "0000";
+			elsif(MARLoLd = '1') then
+				MARLo <= Data;
+			end if;
+		end if;
   	end process;   
 	  
 	-- Complete the code to implement an Address Selector (multiplexer) which determines between two data sources
 	-- (which two?) based on the AddrSel line. Be careful - the process sensitivity list has 4 signals!
 	
-	process(          )
-  	begin				 
-	  
-
-
-
-
-
-
+	process(AddrSel, MARLoLd, MARHiLd, PC)
+  	begin
+		if(AddrSel = '0') then
+			Addr <= PC;
+		elsif(AddrSel = '1') then
+			Addr <= MARLo & MARHi;
+		end if;
   	end process;   
 		
 	
 	  		
 	-- Instantiate and connect the ALU  which was written in a separate file
 	
-
-
-
+	Inst_ALU: ALU PORT MAP(
+		OpSel => Opsel,
+		Data => Data,
+		Accumulator => Accumulator,
+		Result => ALU_Result
+	);
 
 	
 	-- Complete the code to implement an Accumulator.  Use a standard register with an 
 	-- asynchronous Reset_L line and clocked data input.  Which control signal also determines
 	-- when data is loaded?	   What are the inputs and outputs from the register?
-	process(          )
-  	begin				 
-	  
-
-
-
-
-
-
+	process( ACCLd, RESET_L, Clock )
+  	begin	
+		if rising_edge(CLOCK) then
+			if(RESET_L = '1') then
+				Accumulator <= "0000";
+			elsif(ACCLd = '1') then
+				Accumulator <= ALU_Result;
+			end if;
+		end if;
   	end process;     
 	  
 	-- Complete the code to implement a tri-state buffer which places the Accumulator data on the 
 	-- Data Bus when enabled and goes to High Z the rest of the time	
 	-- Note: use "Z" just like a bit.  If you want to set a signal to  High Z, you'd say mySignal <= 'Z';
-	Data <=          when             else         ;
+	Data <=  Accumulator        when  EnAccBuffer = '1'          else   "ZZZZ"      ;
 	  
   	-- Complete the code to implement the Datapath status signals --
-   	AlessZero <=   			--Uses MSB as a sign bit
-  	AeqZero <= 
+   	AlessZero <=  Accumulator(3); 			--Uses MSB as a sign bit
+  	AeqZero <= not Accumulator(3) or Accumulator(2) or Accumulator(1) or Accumulator(0);
 
 			   
 			   
