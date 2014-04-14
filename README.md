@@ -24,3 +24,7 @@ CASE OpSel is
 ```
 #####Simulation
 ![alt tag](https://raw.githubusercontent.com/EricWardner/PRISM_Wardner/master/ALU_Simulation.PNG)
+
+###Datapath
+#####Simulation
+![alt tag](https://raw.githubusercontent.com/EricWardner/PRISM_Wardner/master/DataPath_Simulation.PNG)
