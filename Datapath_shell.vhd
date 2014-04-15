@@ -2,7 +2,7 @@
 --
 -- Title       : Datapath
 -- Design      : Datapath
--- Author      : usafa
+-- Author      : Eric Wardner
 -- Company     : usafa
 --
 -------------------------------------------------------------------------------
@@ -14,7 +14,8 @@
 --
 -------------------------------------------------------------------------------
 --
--- Description : 
+-- Description : VHDL code that implements the data path of a PRISM system
+
 --
 -------------------------------------------------------------------------------
 
