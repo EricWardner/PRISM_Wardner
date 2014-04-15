@@ -29,7 +29,7 @@ As a test of the code, the following waveform was simulated.
 The accuracy of the ALU was checked using the PRISM maunual. For example looking at the manual the opcode "110" preforms the operation "ADDI" which "Adds the value of the operand to the number in the accumulator." To check the simulation first the OpSel value "110' was found then looking at the waveform and knowing the operation, data (1001, 9) should be added with the accumulator (0010, 2) to equal 1. So the result should be 1011, which it is according to the waveform. This same process was used for ach change in "OpSel" to check the validity of the waveform.
 
 ######Debugging
-Initialy I attempted to implement the logic using ```VHDL if ``` statements. After that wouldn't work I used ```VHDL CASE is when ``` in a similar way as [Lab 3](https://github.com/EricWardner/ECE281_Lab3) to succesfully implement the logic.
+Initialy I attempted to implement the logic using ``` if ``` statements. After that wouldn't work I used ``` CASE is when ``` in a similar way as [Lab 3](https://github.com/EricWardner/ECE281_Lab3) to succesfully implement the logic.
 
 ###Datapath
 #####Simulation
