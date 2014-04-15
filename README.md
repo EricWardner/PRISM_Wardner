@@ -69,6 +69,12 @@ it was changed correctly when the distinction was understood to
 if(Reset_L = '0') then
 ```
 #####Simulation
-Using the datapath code a simulation was run with a given internal signals representing an Assembly program's execution through the datapath. The simulation of the program from 50ns to 100ns is shown below.
+Using the datapath code a simulation was run with a given internal signals representing an Assembly program's execution through the datapath. The simulation of the program from 0ns to 50ns is shown below and matches Captain Silva's given simulation.
 
 ![alt tag](https://raw.githubusercontent.com/EricWardner/PRISM_Wardner/master/DataPath_Simulation.PNG)
+
+###Reverse Engineering
+#####0ns - 50ns Analysis
+The simulation was then viewed from 0-50 ns and an attempt was made to reverse engineer
+![alt tag](https://raw.githubusercontent.com/EricWardner/PRISM_Wardner/master/50-100%20analysis.PNG)
+
