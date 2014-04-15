@@ -106,7 +106,7 @@ begin
 	process(CLOCK, Reset_L, IRLd)
 	begin
 	if rising_edge(CLOCK) then  		
-		if(Reset_L = '1') then
+		if(Reset_L = '0') then
 			IR <= "0000";	
 		
 		elsif(IRLD ='1') then
@@ -123,7 +123,7 @@ begin
 	process(Clock, Reset_L, MARHiLd)
   	begin				 
 	  if rising_edge(CLOCK) then
-			if(Reset_L = '1') then
+			if(Reset_L = '0') then
 				MARHi <= "0000";
 			elsif(MARHiLd = '1') then
 				MARHi <= Data;
@@ -138,7 +138,7 @@ begin
 	process(Clock, Reset_L, MARloLd)
   	begin				 
 	  if rising_edge(CLOCK) then
-			if(Reset_L <= '1') then
+			if(Reset_L <= '0') then
 				MARLo <= "0000";
 			elsif(MARLoLd = '1') then
 				MARLo <= Data;
@@ -176,7 +176,7 @@ begin
 	process( ACCLd, RESET_L, Clock )
   	begin	
 		if rising_edge(CLOCK) then
-			if(RESET_L = '1') then
+			if(RESET_L = '0') then
 				Accumulator <= "0000";
 			elsif(ACCLd = '1') then
 				Accumulator <= ALU_Result;
