@@ -75,6 +75,12 @@ Using the datapath code a simulation was run with a given internal signals repre
 
 ###Reverse Engineering
 #####0ns - 50ns Analysis
-The simulation was then viewed from 0-50 ns and an attempt was made to reverse engineer
+The simulation was then viewed from 0-50 ns and an attempt was made to reverse engineer the section of the program
+
 ![alt tag](https://raw.githubusercontent.com/EricWardner/PRISM_Wardner/master/50-100%20analysis.PNG)
+
+The ROR is the only FULL operation that occurs in that time frame.
+#####Jump analysis at 225ns
+
+![alt tag](https://raw.githubusercontent.com/EricWardner/PRISM_Wardner/master/JumpSel_waveform.PNG)
 
