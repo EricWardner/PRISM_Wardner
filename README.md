@@ -1,6 +1,19 @@
 PRISM_Wardner
 =============
 ###ALU
+In basic terms, the ALU is the computer part that completes arithmetic operations. In the case of PRISM, those operations are
+
+|  Mnemonic|Encoding|
+|:--:|:--: |
+| AND |  000|  
+| NEG  |  001|  
+| NOT  |  010| 
+| ROR  |  011|
+| OR  |  100| 
+| IN  |  101|
+| ADD  |  110|
+| LD  |  111|
+
 Given was a shell for the implementation of an ALU. The shell did not have the logic nessicary for a proper implentation. Looking at the PRISM manual each operation was matched with its function and opcode as follows. Without the following logic or with incorrect logic, the operations might not match their opcodes or their functions resulting in a failed ALU.
 #####Code
 ```VHDL
