@@ -14,7 +14,7 @@ In basic terms, the ALU is the computer part that completes arithmetic operation
 | ADD  |  110|
 | LD  |  111|
 
-Given was a shell for the implementation of an ALU. The shell did not have the logic nessicary for a proper implentation. Looking at the PRISM manual each operation was matched with its function and opcode as follows. Without the following logic or with incorrect logic, the operations might not match their opcodes or their functions resulting in a failed ALU.
+Given was a shell for the implementation of an ALU. The shell did not have the logic nessicary for a proper implentation. Looking at the PRISM manual each operation was matched with its function and opcode as follows. Without the following logic or with incorrect logic, the operations might not match their opcodes or their functions may have resulted in a failed ALU.
 #####Code
 ```VHDL
 CASE OpSel is
@@ -45,5 +45,30 @@ The accuracy of the ALU was checked using the PRISM maunual. For example looking
 Initialy I attempted to implement the logic using ``` if ``` statements. After that wouldn't work I used ``` CASE is when ``` in a similar way as [Lab 3](https://github.com/EricWardner/ECE281_Lab3) to succesfully implement the logic.
 
 ###Datapath
+It is easiest to think of the datapath as the overall collection of funtions (including the ALU) that are used together to preform operations, this includes registors, selectors, and logic units. In PRISM these include 
+
+Program Counter  - keeps track of position of the program in memory by generating the memory adderess of instructions and operands.
+
+Memory Adress Register - Stores the addresses created by the operands of operations such as STA that store data in memory.
+
+Instruction Register - Stores the current instructions opcode through the entire instruction cycle
+
+Address Selector - Selects between the PC and MAR as the address source. 
+
+Jump Selector - Loads value of MAR to PC in order to execute a jump to a different place in the memory (instructions).
+
+Again, a shell for the Datapath was given. The ALU had not been implemented in the Datapath code yet, it was added as a component with a component and signal declaration. The only completed logic for the shell was the program counter, the rest of the above registers and selectors had to be implemented. Using the same format as the given Program Counter logic, the rest was implemented successfully. 
+
+######Debugging
+I first did not understand the "RESET_L" signal. I did not know that the "_L" indicated it was responsive when a '0'. At first all of my code looked like 
+```VHDL
+if(Reset_L = '1') then
+```
+it was changed correctly when the distinction was understood to
+```VHDL
+if(Reset_L = '0') then
+```
+
+Using the datapath code a simulation was run with a given internal signals representing an Assembly program's execution through the datapath. The simulation of the program from 50ns to 100ns is shown below.
 #####Simulation
 ![alt tag](https://raw.githubusercontent.com/EricWardner/PRISM_Wardner/master/DataPath_Simulation.PNG)
