@@ -84,3 +84,6 @@ The ROR is the only FULL operation that occurs in that time frame.
 
 ![alt tag](https://raw.githubusercontent.com/EricWardner/PRISM_Wardner/master/JumpSel_waveform.PNG)
 
+The rest of the waveform was reverse engineered in a similar manner to get the following assembly code.
+![alt tag](https://raw.githubusercontent.com/EricWardner/PRISM_Wardner/master/ReversedAssembly.PNG)
+
