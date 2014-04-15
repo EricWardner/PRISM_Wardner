@@ -68,7 +68,7 @@ it was changed correctly when the distinction was understood to
 ```VHDL
 if(Reset_L = '0') then
 ```
-
-Using the datapath code a simulation was run with a given internal signals representing an Assembly program's execution through the datapath. The simulation of the program from 50ns to 100ns is shown below.
 #####Simulation
+Using the datapath code a simulation was run with a given internal signals representing an Assembly program's execution through the datapath. The simulation of the program from 50ns to 100ns is shown below.
+
 ![alt tag](https://raw.githubusercontent.com/EricWardner/PRISM_Wardner/master/DataPath_Simulation.PNG)
