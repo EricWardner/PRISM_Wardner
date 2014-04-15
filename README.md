@@ -47,17 +47,19 @@ Initialy I attempted to implement the logic using ``` if ``` statements. After t
 ###Datapath
 It is easiest to think of the datapath as the overall collection of funtions (including the ALU) that are used together to preform operations, this includes registors, selectors, and logic units. In PRISM these include 
 
-Program Counter  - keeps track of position of the program in memory by generating the memory adderess of instructions and operands.
+**Program Counter**  - keeps track of position of the program in memory by generating the memory adderess of instructions and operands.
 
-Memory Adress Register - Stores the addresses created by the operands of operations such as STA that store data in memory.
+**Memory Adress Register** - Stores the addresses created by the operands of operations such as STA that store data in memory.
 
-Instruction Register - Stores the current instructions opcode through the entire instruction cycle
+**Instruction Register** - Stores the current instructions opcode through the entire instruction cycle
 
-Address Selector - Selects between the PC and MAR as the address source. 
+**Address Selector** - Selects between the PC and MAR as the address source. 
 
-Jump Selector - Loads value of MAR to PC in order to execute a jump to a different place in the memory (instructions).
+**Jump Selector** - Loads value of MAR to PC in order to execute a jump to a different place in the memory (instructions).
 
 Again, a shell for the Datapath was given. The ALU had not been implemented in the Datapath code yet, it was added as a component with a component and signal declaration. The only completed logic for the shell was the program counter, the rest of the above registers and selectors had to be implemented. Using the same format as the given Program Counter logic, the rest was implemented successfully. 
+
+The given testbench was meant to simulate a program, there were some problems with the given code. It seemed that while commenting out code, the author forgot to change the arrangement of the semi-colons. Once complete the code worked perfectly. 
 
 ######Debugging
 I first did not understand the "RESET_L" signal. I did not know that the "_L" indicated it was responsive when a '0'. At first all of my code looked like 
@@ -85,5 +87,5 @@ The ROR is the only FULL operation that occurs in that time frame.
 ![alt tag](https://raw.githubusercontent.com/EricWardner/PRISM_Wardner/master/JumpSel_waveform.PNG)
 
 The rest of the waveform was reverse engineered in a similar manner to get the following assembly code.
-![alt tag](https://raw.githubusercontent.com/EricWardner/PRISM_Wardner/master/ReversedAssembly.PNG)
+![alt tag](https://raw.githubusercontent.com/EricWardner/PRISM_Wardner/master/ReversedProgram.PNG)
 
